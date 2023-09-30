@@ -968,6 +968,14 @@ export default {
         this.submit();
       }
     },
+//By Netmanthan
+        shortPay(e) {
+      if (e.key === "F8") {
+        e.preventDefault();
+        this.'submit & Print'();
+      }
+    },
+    
     set_paid_change() {
       if (!this.paid_change) this.paid_change = 0;
 
