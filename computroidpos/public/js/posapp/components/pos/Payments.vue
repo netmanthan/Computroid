@@ -972,7 +972,7 @@ export default {
         shortPay(e) {
       if (e.key === "F8") {
         e.preventDefault();
-        this.'submit & Print'();
+        this.submit & Print();
       }
     },
     
