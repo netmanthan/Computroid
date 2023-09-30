@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include computroidpos *.css
+recursive-include computroidpos *.csv
+recursive-include computroidpos *.html
+recursive-include computroidpos *.ico
+recursive-include computroidpos *.js
+recursive-include computroidpos *.json
+recursive-include computroidpos *.md
+recursive-include computroidpos *.png
+recursive-include computroidpos *.py
+recursive-include computroidpos *.svg
+recursive-include computroidpos *.txt
+recursive-exclude computroidpos *.pyc
