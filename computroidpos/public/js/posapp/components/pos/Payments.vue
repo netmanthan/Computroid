@@ -965,7 +965,7 @@ export default {
     shortPay(e) {
       if (e.key === "F7") {
         e.preventDefault();
-        this.submit();
+        this.submit.print();
       }
     },
     set_paid_change() {
