@@ -176,7 +176,7 @@ export default {
     },
     go_about() {
       const win = window.open(
-        'https://github.com/netmanthan/computroid',
+        'https://netmanthan.com',
         '_blank'
       );
       win.focus();
