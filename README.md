@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://computroid.com">
+    <a href="computroid.com">
         <img src="https://github.com/netmanthan/Computroid/blob/develop/images/computroidpos.png" height="128">
     </a>
     <h2>Compuroid POS</h2>
