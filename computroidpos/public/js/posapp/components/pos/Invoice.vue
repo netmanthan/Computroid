@@ -750,7 +750,7 @@
                 color="warning"
                 dark
                 @click="get_draft_invoices"
-                >{{ __("HoldBill") }}</v-btn
+                >{{ __("Hold-Bill") }}</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
