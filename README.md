@@ -9,7 +9,7 @@
 
 ---
 
-### Main Features
+### Main Features Of Computroid ShoperPrime POint Of Sales
 
 <section class="section section-padding-top" data-section-idx="5" data-section-template="Section with Cards"><div class="container"><div class="section-with-cards"><h2 class="section-title">Main Features of Computroid POS!</h2><p class="section-description">Cloud Point Of sales</p><div class="mt-6">
 <div class="row mt-n6"><div class="mt-6 col-12 col-sm-6 col-lg-3">
