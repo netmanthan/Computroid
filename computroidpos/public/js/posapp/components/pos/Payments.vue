@@ -947,7 +947,7 @@ export default {
         function () {
           printWindow.print();
           printWindow.close();
-          // NOTE : uncomoent this to auto closing printing window
+          // NOTE : comment or uncomoent this to auto closing printing window above line i.e (printWindow.close();) //Jawahar R M
         },
         true
       );
