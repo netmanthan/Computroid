@@ -697,6 +697,10 @@
       </v-dialog>
     </div>
   </div>
+  <div>
+    <span class="v-btn__content" @keydown.ctrl.c="cancelPayment" v-if="textContent === 'Cancel Payment'">Cancel Payment</span>
+  </div>
+   <!-- above acance apaymet  -->
 </template>
 
 <script>
@@ -1466,4 +1470,8 @@ export default {
     },
   },
 };
+
+function cancelPayment() {
+  // Cancel the payment Jawahar
+}
 </script>
