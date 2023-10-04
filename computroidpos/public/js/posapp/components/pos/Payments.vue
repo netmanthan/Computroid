@@ -646,9 +646,8 @@
             dark
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
-             accesskey="p"
-             @keydown.F9="submitF9"
-            >{{ __("Submit & Print") }}(Alt+P)</v-btn
+             accesskey="b"
+            >{{ __("Submit & Print") }}(Alt+B)</v-btn
           >
         </v-col>
         <v-col cols="12">
@@ -734,14 +733,6 @@ export default {
   }),
 
   methods: {
-    submitF9(event) {
-      console.log('F9 key pressed'); // Log that the F9 key is pressed
-      if (event.key === "F9") {
-        event.preventDefault();
-        console.log('Calling submit method'); // Log that the submit method is called
-        this.submit(event, false, true);
-      }
-    },
     back_to_invoice() {
       evntBus.$emit("show_payment", "false");
       evntBus.$emit("set_customer_readonly", false);
