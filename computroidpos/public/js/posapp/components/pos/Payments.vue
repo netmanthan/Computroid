@@ -277,7 +277,9 @@
           <v-btn block large color="primary" dark @click="submit" :disabled="vaildatPayment">{{ __("Submit") }}</v-btn>
         </v-col>
         <v-col cols="6" class="pl-1">
-          <v-btn block large color="success" dark @click="submit(undefined, false, true)" :disabled="vaildatPayment"
+          <v-btn
+          ref="submitButton" 
+          block large color="success" dark @click="submit(undefined, false, true)" :disabled="vaildatPayment"
             accesskey="b" @keydown.f8.prevent="handleF8KeyPress">
             {{ __("Submit & Print") }}(Alt+B)</v-btn>
         </v-col>
@@ -352,19 +354,6 @@ export default {
   }),
 
   methods: {
-    // Handle F8 keypress event
-    handleF8KeyPress(e) {
-      if (e.key === "F8") {
-        e.preventDefault();
-        console.log("F8 key pressed"); // Add this line for debugging
-        const submitButton = this.$refs.submitButton;
-        if (submitButton && submitButton.$el) {
-          submitButton.$el.click();
-        } else {
-          console.error("Submit button or its DOM element not found.");
-        }
-      }
-    },
     back_to_invoice() {
       evntBus.$emit("show_payment", "false");
       evntBus.$emit("set_customer_readonly", false);
@@ -602,10 +591,10 @@ export default {
         this.submit();
       }
     },
-    handleF8KeyPress(e) {
+    shortPay(e) {
       if (e.key === "F8") {
         e.preventDefault();
-        this.submit();
+        this.$refs.submitButton.$el.click();
       }
     },
     set_paid_change() {
