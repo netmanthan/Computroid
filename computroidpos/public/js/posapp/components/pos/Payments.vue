@@ -962,12 +962,37 @@ export default {
         }, 0);
       }
     },
+    // shortPay(e) {
+    //   if (e.key === "F7") {
+    //     e.preventDefault();
+    //     this.submit();
+    //   }
+    // },
+
+    // below added new method by Jawahar R 
+    // shortPay(e) {
+    //   e.if (key === "F7") {
+    //     e.preventDefault();
+    //     this.submit();
+    //   } else if (e.key === "F9") {
+    //     // Handle the F9 key press (you can use a different key if needed)
+    //     e.preventDefault();
+    //     this.goBack();
+    //   }
+    // },
+// below added new method by Jawahar R 
     shortPay(e) {
-      if (e.key === "F7") {
+      if (e.key === "F9") {
         e.preventDefault();
         this.submit();
+      } else if (e.key === "Escape") {
+        // Handle the Escape key press
+        e.preventDefault();
+        this.goBack();
       }
     },
+
+
 
     set_paid_change() {
       if (!this.paid_change) this.paid_change = 0;
