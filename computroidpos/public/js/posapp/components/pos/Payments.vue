@@ -1468,6 +1468,15 @@ export default {
         this.invoice_doc.sales_team = [];
       }
     },
+    handleKeyPress(event) {
+      if (event.key === 'F9') {
+        // Prevent the default F9 key behavior
+        event.preventDefault();
+
+        // Trigger the click event on the button
+        this.$refs.submitPrintButton.click();
+      }
+    },
   },
 };
 </script>
