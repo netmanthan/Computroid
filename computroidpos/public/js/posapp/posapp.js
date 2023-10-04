@@ -1,4 +1,7 @@
 import Home from './Home.vue';
+import F9KeyPressPlugin from './F9KeyPressPlugin';
+Vue.use(F9KeyPressPlugin);
+
 
 frappe.provide('frappe.PosApp');
 

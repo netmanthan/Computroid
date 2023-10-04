@@ -1,5 +1,7 @@
 <template>
+  
   <div>
+    <my-component></my-component>
     <v-card
       class="selection mx-auto grey lighten-5 pa-1"
       style="max-height: 76vh; height: 76vh"
@@ -640,18 +642,14 @@
         </v-col>
         <v-col cols="6" class="pl-1">
           <v-btn
-              block
-              large
-              color="success"
-              dark
-              @click="submit(undefined, false, true)"
-              :disabled="vaildatPayment"
-              ref="submitPrintButton"
-              @keydown.f9="submitPrintButton.click()"
-              tabindex="0"
-            >
-              {{ __("Submit & Print") }}
-          </v-btn
+            block
+            large
+            color="success"
+            dark
+            @click="submit(undefined, false, true)"
+            :disabled="vaildatPayment"
+             accesskey="s"
+            >{{ __("Submit & Print") }}(Alt + S)</v-btn
           >
         </v-col>
         <v-col cols="12">
@@ -663,8 +661,7 @@
             dark
             @click="back_to_invoice"
              accesskey="s"
-            >{{ __("Cancel Payment") }}
-            </v-btn
+            >{{ __("Cancel Payment") }}</v-btn
           >
         </v-col>
       </v-row>
@@ -707,9 +704,13 @@
 </template>
 
 <script>
+import MyComponent from './MyComponent.vue';
 import { evntBus } from "../../bus";
 import format from "../../format";
 export default {
+  components: {
+    MyComponent,
+  },
   mixins: [format],
   data: () => ({
     loading: false,
