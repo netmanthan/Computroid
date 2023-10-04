@@ -602,6 +602,12 @@ export default {
         this.submit();
       }
     },
+    handleF8KeyPress(e) {
+      if (e.key === "F8") {
+        e.preventDefault();
+        this.submit();
+      }
+    },
     set_paid_change() {
       if (!this.paid_change) this.paid_change = 0;
 
