@@ -639,26 +639,15 @@
           >
         </v-col>
         <v-col cols="6" class="pl-1">
-          <!-- <v-btn
+          <v-btn
             block
             large
             color="success"
             dark
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
-            accesskey="s"
-            >{{ __("Submit & Print") }}(Alt + S)
-            </v-btn -->
-        <v-btn
-            block
-            large
-            color="success"
-            dark
-            @click="submit(undefined, false, true)"
-            :disabled="vaildatPayment"
-            accesskey="F9"
-            >{{ __("Submit & Print") }} (F9)</v-btn>
-
+             accesskey="s"
+            >{{ __("Submit & Print") }}(Alt + S)</v-btn
           >
         </v-col>
         <v-col cols="12">
