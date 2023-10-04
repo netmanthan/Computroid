@@ -1023,6 +1023,7 @@ export default {
   },
   created() {
     document.addEventListener("keydown", this.shortPay.bind(this));
+    document.addEventListener("keydown", this.handleF8KeyPress.bind(this));
   },
   beforeDestroy() {
     evntBus.$off("send_invoice_doc_payment");
@@ -1038,6 +1039,7 @@ export default {
 
   destroyed() {
     document.removeEventListener("keydown", this.shortPay);
+    document.removeEventListener("keydown", this.handleF8KeyPress);    
   },
 
   watch: {
