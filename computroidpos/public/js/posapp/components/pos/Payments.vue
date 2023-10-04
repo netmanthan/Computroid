@@ -640,14 +640,18 @@
         </v-col>
         <v-col cols="6" class="pl-1">
           <v-btn
-            block
-            large
-            color="success"
-            dark
-            @click="submit(undefined, false, true)"
-            :disabled="vaildatPayment"
+              block
+              large
+              color="success"
+              dark
+              @click="submit(undefined, false, true)"
+              :disabled="vaildatPayment"
+              ref="submitPrintButton"
+              @keydown.f9="submitPrintButton.click()"
+              tabindex="0"
             >
-             {{ __("Submit & Print") }}</v-btn
+              {{ __("Submit & Print") }}
+          </v-btn
           >
         </v-col>
         <v-col cols="12">
@@ -659,7 +663,8 @@
             dark
             @click="back_to_invoice"
              accesskey="s"
-            >{{ __("Cancel Payment") }}</v-btn
+            >{{ __("Cancel Payment") }}
+            </v-btn
           >
         </v-col>
       </v-row>
@@ -706,11 +711,6 @@ import { evntBus } from "../../bus";
 import format from "../../format";
 export default {
   mixins: [format],
-  data() {
-    return {
-      vaildatPayment: false,
-    };
-  },
   data: () => ({
     loading: false,
     pos_profile: "",
@@ -975,13 +975,6 @@ export default {
         this.submit();
       }
     },
-    handleKeyPress(event) {
-      if (event.key === 'F9') {
-        // Prevent the default F9 key behavior
-        event.preventDefault();
-
-        // Trigger the click event on the button
-        this.$refs.submitPrintButton.click();
     set_paid_change() {
       if (!this.paid_change) this.paid_change = 0;
 
@@ -1253,6 +1246,7 @@ export default {
       this.customer_credit_dict.push(advance);
     },
   },
+
   computed: {
     total_payments() {
       let total = parseFloat(this.invoice_doc.loyalty_amount);
@@ -1351,8 +1345,6 @@ export default {
         const default_payment = this.invoice_doc.payments.find(
           (payment) => payment.default == 1
         );
-        // Add an event listener for keydown events Jawahar
-        window.addEventListener('keydown', this.handleKeyPress);
         this.is_credit_sale = 0;
         this.is_write_off_change = 0;
         if (default_payment && !invoice_doc.is_return) {
@@ -1419,7 +1411,6 @@ export default {
     evntBus.$off("set_customer_info_to_edit");
     evntBus.$off("update_invoice_coupons");
     evntBus.$off("set_mpesa_payment");
-    window.removeEventListener('keydown', this.handleKeyPress);
   },
 
   destroyed() {
@@ -1478,15 +1469,6 @@ export default {
         ];
       } else {
         this.invoice_doc.sales_team = [];
-      }
-    },
-    handleKeyPress(event) {
-      if (event.key === 'F9') {
-        // Prevent the default F9 key behavior
-        event.preventDefault();
-
-        // Trigger the click event on the button
-        this.$refs.submitPrintButton.click();
       }
     },
   },
