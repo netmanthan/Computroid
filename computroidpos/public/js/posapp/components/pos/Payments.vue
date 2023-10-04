@@ -639,7 +639,7 @@
           >
         </v-col>
         <v-col cols="6" class="pl-1">
-          <!-- <v-btn
+          <v-btn
             block
             large
             color="success"
@@ -647,19 +647,7 @@
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
              accesskey="s"
-            >{{ __("Submit & Print") }}(Alt + S)
-            </v-btn -->
-            <v-btn
-            block
-            large
-            color="success"
-            dark
-            @click="submit(undefined, false, true)"
-            :disabled="vaildatPayment"
-            id="submitPrintButton"
-          >
-            {{ __("Submit & Print") }}
-          </v-btn>
+            >{{ __("Submit & Print") }}(Alt + S)</v-btn
           >
         </v-col>
         <v-col cols="12">
@@ -670,8 +658,8 @@
             color="error"
             dark
             @click="back_to_invoice"
-            accesskey="c"
-            >{{ __("Cancel Payment") }}(Alt + C)</v-btn
+             accesskey="s"
+            >{{ __("Cancel Payment") }}</v-btn
           >
         </v-col>
       </v-row>
@@ -1478,17 +1466,6 @@ export default {
         this.invoice_doc.sales_team = [];
       }
     },
-    // Add an event listener for the F9 key press
-    document.addEventListener('keydown', function(event) {
-    if (event.key === 'F9') {
-    // Trigger the click event on the button with id "submitPrintButton"
-      var button = document.getElementById('submitPrintButton');
-    if (button && !button.disabled) {
-      button.click();
-    }
-  }
-}),
   },
 };
 </script>
-
