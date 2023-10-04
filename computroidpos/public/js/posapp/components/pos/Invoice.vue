@@ -10,11 +10,11 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="error" @click="cancel_invoice">
-            Cancelaccesskey="c"
-            {{ __("Cancel") }}(Alt+C)
+            accesskey="c"
+            {{ __("Cancel")}}(Alt+C)
           </v-btn>
           <v-btn color="warning" @click="cancel_dialog = false">
-            Cancelaccesskey="c"
+            accesskey="c"
             {{ __("Back") }}(Alt+C)
           </v-btn>
         </v-card-actions>
@@ -764,7 +764,8 @@
                 color="secondary"
                 dark
                 @click="open_returns"
-                >{{ __("Return") }}</v-btn
+                accesskey="R"
+                >{{ __("Return") }}(Alt+R)</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -784,7 +785,8 @@
                 color="accent"
                 dark
                 @click="new_invoice"
-                >{{ __("Save/New") }}</v-btn
+                accesskey="s"
+                >{{ __("Save/New") }}(Alt+S)</v-btn
               >
             </v-col>
             <v-col class="pa-1">
@@ -794,7 +796,8 @@
                 color="success"
                 @click="show_payment"
                 dark
-                >{{ __("PAY") }}</v-btn
+                accesskey="P"
+                >{{ __("PAY") }}(Alt+P)</v-btn
               >
             </v-col>
             <v-col
