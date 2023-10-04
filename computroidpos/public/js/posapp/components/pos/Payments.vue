@@ -646,9 +646,7 @@
             dark
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
-             accesskey="9"
-             title="F9"
-             >
+            >
              {{ __("Submit & Print") }}</v-btn
           >
         </v-col>
@@ -708,6 +706,11 @@ import { evntBus } from "../../bus";
 import format from "../../format";
 export default {
   mixins: [format],
+  data() {
+    return {
+      vaildatPayment: false,
+    };
+  },
   data: () => ({
     loading: false,
     pos_profile: "",
@@ -972,6 +975,13 @@ export default {
         this.submit();
       }
     },
+    handleKeyPress(event) {
+      if (event.key === 'F9') {
+        // Prevent the default F9 key behavior
+        event.preventDefault();
+
+        // Trigger the click event on the button
+        this.$refs.submitPrintButton.click();
     set_paid_change() {
       if (!this.paid_change) this.paid_change = 0;
 
@@ -1243,7 +1253,6 @@ export default {
       this.customer_credit_dict.push(advance);
     },
   },
-
   computed: {
     total_payments() {
       let total = parseFloat(this.invoice_doc.loyalty_amount);
@@ -1342,6 +1351,8 @@ export default {
         const default_payment = this.invoice_doc.payments.find(
           (payment) => payment.default == 1
         );
+        // Add an event listener for keydown events Jawahar
+        window.addEventListener('keydown', this.handleKeyPress);
         this.is_credit_sale = 0;
         this.is_write_off_change = 0;
         if (default_payment && !invoice_doc.is_return) {
@@ -1408,6 +1419,7 @@ export default {
     evntBus.$off("set_customer_info_to_edit");
     evntBus.$off("update_invoice_coupons");
     evntBus.$off("set_mpesa_payment");
+    window.removeEventListener('keydown', this.handleKeyPress);
   },
 
   destroyed() {
