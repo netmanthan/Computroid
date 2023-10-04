@@ -735,8 +735,10 @@ export default {
 
   methods: {
     submitF9(event) {
+      console.log('F9 key pressed'); // Log that the F9 key is pressed
       if (event.key === "F9") {
         event.preventDefault();
+        console.log('Calling submit method'); // Log that the submit method is called
         this.submit(event, false, true);
       }
     },
