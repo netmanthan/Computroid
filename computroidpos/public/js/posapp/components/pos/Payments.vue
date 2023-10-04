@@ -282,8 +282,12 @@
             {{ __("Submit & Print") }}(Alt+B)</v-btn>
         </v-col>
         <v-col cols="12">
-          <v-btn block class="mt-2 pa-1" large color="error" dark @click="back_to_invoice" accesskey="c">{{ __("Cancel
-                      Payment")}}(Alt+C)</v-btn>
+          <v-btn block class="mt-2 pa-1" 
+          large color="error" 
+          dark @click="back_to_invoice" 
+          accesskey="c"
+          >
+          {{ __("Cancel Payment")}}(Alt+C)</v-btn>
         </v-col>
       </v-row>
     </v-card>
