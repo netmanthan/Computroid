@@ -10,12 +10,10 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="error" @click="cancel_invoice">
-            accesskey="c"
-            {{ __("Cancel")}}(Alt+C)
+            {{ __("Cancel")}}
           </v-btn>
           <v-btn color="warning" @click="cancel_dialog = false">
-            accesskey="c"
-            {{ __("Back") }}(Alt+C)
+            {{ __("Back") }}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -752,8 +750,8 @@
                 color="warning"
                 dark
                 @click="get_draft_invoices"
-                accesskey="h"
-                >{{ __("Hold-Bill") }}(Alt+H)</v-btn
+                accesskey="d"
+                >{{ __("Recall-Hold") }}(Alt+D)</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -785,8 +783,8 @@
                 color="accent"
                 dark
                 @click="new_invoice"
-                accesskey="s"
-                >{{ __("Save/New") }}(Alt+S)</v-btn
+                accesskey="h"
+                >{{ __("Hold & New") }}(Alt+H)</v-btn
               >
             </v-col>
             <v-col class="pa-1">
