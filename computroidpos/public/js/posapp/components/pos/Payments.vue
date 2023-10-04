@@ -646,6 +646,7 @@
             dark
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
+            accesskey="s"
             >{{ __("Submit & Print") }}(Alt + S)</v-btn
           >
         </v-col>
