@@ -660,20 +660,6 @@
               >
                 {{ __("Submit & Print") }}
               </v-btn>
-
-              <script>
-              // Add an event listener for the F9 key press
-              document.addEventListener('keydown', function(event) {
-                if (event.key === 'F9') {
-                  // Trigger the click event on the button with id "submitPrintButton"
-                  var button = document.getElementById('submitPrintButton');
-                  if (button && !button.disabled) {
-                    button.click();
-                  }
-                }
-              });
-              </script>
-
           >
         </v-col>
         <v-col cols="12">
@@ -1492,6 +1478,16 @@ export default {
         this.invoice_doc.sales_team = [];
       }
     },
+    // Add an event listener for the F9 key press
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'F9') {
+        // Trigger the click event on the button with id "submitPrintButton"
+        var button = document.getElementById('submitPrintButton');
+        if (button && !button.disabled) {
+          button.click();
+        }
+      }
+    })
   },
 };
 </script>
