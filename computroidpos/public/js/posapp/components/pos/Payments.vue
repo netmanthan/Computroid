@@ -639,7 +639,7 @@
           >
         </v-col>
         <v-col cols="6" class="pl-1">
-          <v-btn
+          <!-- <v-btn
             block
             large
             color="success"
@@ -647,7 +647,18 @@
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
             accesskey="s"
-            >{{ __("Submit & Print") }}(Alt + S)</v-btn
+            >{{ __("Submit & Print") }}(Alt + S)
+            </v-btn -->
+        <v-btn
+            block
+            large
+            color="success"
+            dark
+            @click="submit(undefined, false, true)"
+            :disabled="vaildatPayment"
+            accesskey="F9"
+            >{{ __("Submit & Print") }} (F9)</v-btn>
+
           >
         </v-col>
         <v-col cols="12">
@@ -658,7 +669,8 @@
             color="error"
             dark
             @click="back_to_invoice"
-            >{{ __("Cancel Payment") }}</v-btn
+            accesskey="c"
+            >{{ __("Cancel Payment") }}(Alt + C)</v-btn
           >
         </v-col>
       </v-row>
