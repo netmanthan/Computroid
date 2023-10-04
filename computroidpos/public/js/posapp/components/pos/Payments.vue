@@ -647,7 +647,9 @@
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
              accesskey="b"
-            >{{ __("Submit & Print") }}(Alt+B)</v-btn
+             @keydown.f9.prevent="handleF6KeyPress"
+          >
+             {{ __("Submit & Print") }}(Alt+B)</v-btn
           >
         </v-col>
         <v-col cols="12">
@@ -702,6 +704,7 @@
 </template>
 
 <script>
+import Mousetrap from 'mousetrap';
 import { evntBus } from "../../bus";
 import format from "../../format";
 export default {
@@ -733,6 +736,17 @@ export default {
   }),
 
   methods: {
+    handleF6KeyPress(e) {
+    if (e.key === "F9") {
+      e.preventDefault();
+      const submitButton = this.$refs.submitButton;
+      if (submitButton && submitButton.$el) {
+        submitButton.$el.click();
+      } else {
+        console.error("Submit button or its DOM element not found.");
+      }
+    }
+  },
     back_to_invoice() {
       evntBus.$emit("show_payment", "false");
       evntBus.$emit("set_customer_readonly", false);
