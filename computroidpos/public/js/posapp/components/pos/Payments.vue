@@ -1,7 +1,5 @@
 <template>
-  
   <div>
-    <my-component></my-component>
     <v-card
       class="selection mx-auto grey lighten-5 pa-1"
       style="max-height: 76vh; height: 76vh"
@@ -648,8 +646,7 @@
             dark
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
-             accesskey="s"
-            >{{ __("Submit & Print") }}(Alt + S)</v-btn
+            >{{ __("Submit & Print") }}</v-btn
           >
         </v-col>
         <v-col cols="12">
@@ -660,7 +657,6 @@
             color="error"
             dark
             @click="back_to_invoice"
-             accesskey="s"
             >{{ __("Cancel Payment") }}</v-btn
           >
         </v-col>
@@ -704,13 +700,9 @@
 </template>
 
 <script>
-import MyComponent from './MyComponent.vue';
 import { evntBus } from "../../bus";
 import format from "../../format";
 export default {
-  components: {
-    MyComponent,
-  },
   mixins: [format],
   data: () => ({
     loading: false,
