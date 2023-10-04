@@ -646,7 +646,8 @@
             dark
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
-            >{{ __("Submit & Print") }}</v-btn
+             accesskey="p"
+            >{{ __("Submit & Print") }}(Alt+P)</v-btn
           >
         </v-col>
         <v-col cols="12">
@@ -657,7 +658,8 @@
             color="error"
             dark
             @click="back_to_invoice"
-            >{{ __("Cancel Payment") }}</v-btn
+             accesskey="c"
+            >{{ __("Cancel Payment")}}(Alt+C)</v-btn
           >
         </v-col>
       </v-row>
