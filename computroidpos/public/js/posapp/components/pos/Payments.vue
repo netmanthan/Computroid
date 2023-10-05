@@ -108,6 +108,7 @@
               "
             >
               <v-btn
+                ref="span1Ref"
                 block
                 class=""
                 color="primary"
