@@ -981,6 +981,12 @@ export default {
         this.$refs.submitButton.$el.click();
       }
     },
+    span1Ref(e) {
+      if (e.key === "F10") {
+        e.preventDefault();
+        this.$refs.span1Ref.$el.click();
+      }
+    },
     set_paid_change() {
       if (!this.paid_change) this.paid_change = 0;
 
@@ -1407,6 +1413,7 @@ export default {
   created() {
     document.addEventListener("keydown", this.shortPay.bind(this));
     document.addEventListener("keydown", this.shortPandSubmit.bind(this));
+    document.addEventListener("keydown", this.span1Ref.bind(this));
       },
   beforeDestroy() {
     evntBus.$off("send_invoice_doc_payment");
@@ -1423,6 +1430,7 @@ export default {
   destroyed() {
     document.removeEventListener("keydown", this.shortPay);
     document.removeEventListener("keydown", this.shortPandSubmit);
+    document.removeEventListener("keydown", this.span1Ref);
 
   },
 
