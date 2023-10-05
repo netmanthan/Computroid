@@ -108,7 +108,7 @@
               "
             >
               <v-btn
-                ref="span1Ref"
+                ref="vBtnContent"
                 block
                 class=""
                 color="primary"
@@ -983,7 +983,7 @@ export default {
     //     this.$refs.span1Ref.$el.click();
     //   }
     // },
-    span1Ref(e) {
+    vBtnContent(e) {
       if (e.key === "F10" && this.$refs.vBtnContent.textContent.includes("UPI")) {
         e.preventDefault();
         this.$refs.vBtnContent.$el.click();
@@ -1415,7 +1415,7 @@ export default {
   created() {
     document.addEventListener("keydown", this.shortPay.bind(this));
     document.addEventListener("keydown", this.shortPandSubmit.bind(this));
-    document.addEventListener("keydown", this.span1Ref.bind(this));
+    document.addEventListener("keydown", this.vBtnContent.bind(this));
       },
   beforeDestroy() {
     evntBus.$off("send_invoice_doc_payment");
@@ -1432,7 +1432,7 @@ export default {
   destroyed() {
     document.removeEventListener("keydown", this.shortPay);
     document.removeEventListener("keydown", this.shortPandSubmit);
-    document.removeEventListener("keydown", this.span1Ref);
+    document.removeEventListener("keydown", this.vBtnContent);
 
   },
 
