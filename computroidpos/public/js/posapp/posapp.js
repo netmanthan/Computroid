@@ -1,4 +1,5 @@
 import Home from './Home.vue';
+
 frappe.provide('frappe.PosApp');
 
 

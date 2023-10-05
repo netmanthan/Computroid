@@ -158,7 +158,7 @@ export default {
       snackColor: '',
       snackText: '',
       company: 'Computroid POS',
-      company_img: '/assets/computroidpos/js/posapp/components/pos/pos.png',
+      company_img: '/assets/erpnext/images/erpnext-logo.svg',
       pos_profile: '',
       freeze: false,
       freezeTitle: '',
@@ -176,7 +176,7 @@ export default {
     },
     go_about() {
       const win = window.open(
-        'https://netmanthan.com',
+        'https://github.com/netmanthan/computroid_pos',
         '_blank'
       );
       win.focus();

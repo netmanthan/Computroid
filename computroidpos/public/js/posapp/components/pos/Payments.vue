@@ -881,7 +881,7 @@ export default {
 
       const vm = this;
       frappe.call({
-        method: "computroid.computroid.api.posapp.submit_invoice",
+        method: "computroidpos.computroidpos.api.posapp.submit_invoice",
         args: {
           data: data,
           invoice: this.invoice_doc,
@@ -963,7 +963,7 @@ export default {
       }
     },
     shortPay(e) {
-      if (e.key === "x" && (e.ctrlKey || e.metaKey)) {
+      if (e.key === "F7") {
         e.preventDefault();
         this.submit();
       }
@@ -984,7 +984,7 @@ export default {
       this.clear_all_amounts();
       if (e) {
         frappe
-          .call("computroid.computroid.api.posapp.get_available_credit", {
+          .call("computroidpos.computroidpos.api.posapp.get_available_credit", {
             customer: this.invoice_doc.customer,
             company: this.pos_profile.company,
           })
@@ -1024,7 +1024,7 @@ export default {
         return;
       }
       frappe.call({
-        method: "computroid.computroid.api.posapp.get_customer_addresses",
+        method: "computroidpos.computroidpos.api.posapp.get_customer_addresses",
         args: { customer: vm.invoice_doc.customer },
         async: true,
         callback: function (r) {
@@ -1071,7 +1071,7 @@ export default {
         );
       }
       frappe.call({
-        method: "computroid.computroid.api.posapp.get_sales_person_names",
+        method: "computroidpos.computroidpos.api.posapp.get_sales_person_names",
         callback: function (r) {
           if (r.message) {
             vm.sales_persons = r.message;
@@ -1125,7 +1125,7 @@ export default {
 
       frappe
         .call({
-          method: "computroid.computroid.api.posapp.update_invoice",
+          method: "computroidpos.computroidpos.api.posapp.update_invoice",
           args: {
             data: formData,
           },
@@ -1139,7 +1139,7 @@ export default {
         .then(() => {
           frappe
             .call({
-              method: "computroid.computroid.api.posapp.create_payment_request",
+              method: "computroidpos.computroidpos.api.posapp.create_payment_request",
               args: {
                 doc: vm.invoice_doc,
               },
@@ -1195,7 +1195,7 @@ export default {
     get_mpesa_modes() {
       const vm = this;
       frappe.call({
-        method: "computroid.computroid.api.m_pesa.get_mpesa_mode_of_payment",
+        method: "computroidpos.computroidpos.api.m_pesa.get_mpesa_mode_of_payment",
         args: { company: vm.pos_profile.company },
         async: true,
         callback: function (r) {
@@ -1229,18 +1229,11 @@ export default {
     set_mpesa_payment(payment) {
       this.pos_profile.use_customer_credit = 1;
       this.redeem_customer_credit = true;
-      const invoiceAmount =
-        this.invoice_doc.rounded_total || this.invoice_doc.grand_total;
-      let amount =
-        payment.unallocated_amount > invoiceAmount
-          ? invoiceAmount
-          : payment.unallocated_amount;
-      if (amount < 0 || !amount) amount = 0;
       const advance = {
         type: "Advance",
         credit_origin: payment.name,
         total_credit: flt(payment.unallocated_amount),
-        credit_to_redeem: flt(amount),
+        credit_to_redeem: flt(payment.unallocated_amount),
       };
       this.clear_all_amounts();
       this.customer_credit_dict.push(advance);

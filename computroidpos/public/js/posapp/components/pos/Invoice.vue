@@ -1063,7 +1063,7 @@ export default {
       this.posting_date = frappe.datetime.nowdate();
       if (doc.name && this.pos_profile.posa_allow_delete) {
         frappe.call({
-          method: "computroid.computroid.api.posapp.delete_invoice",
+          method: "computroidpos.computroidpos.api.posapp.delete_invoice",
           args: { invoice: doc.name },
           async: true,
           callback: function (r) {
@@ -1233,7 +1233,7 @@ export default {
     update_invoice(doc) {
       const vm = this;
       frappe.call({
-        method: "computroid.computroid.api.posapp.update_invoice",
+        method: "computroidpos.computroidpos.api.posapp.update_invoice",
         args: {
           data: doc,
         },
@@ -1433,7 +1433,7 @@ export default {
     get_draft_invoices() {
       const vm = this;
       frappe.call({
-        method: "computroid.computroid.api.posapp.get_draft_invoices",
+        method: "computroidpos.computroidpos.api.posapp.get_draft_invoices",
         args: {
           pos_opening_shift: this.pos_opening_shift.name,
         },
@@ -1461,7 +1461,7 @@ export default {
       const vm = this;
       if (!vm.pos_profile) return;
       frappe.call({
-        method: "computroid.computroid.api.posapp.get_items_details",
+        method: "computroidpos.computroidpos.api.posapp.get_items_details",
         async: false,
         args: {
           pos_profile: vm.pos_profile,
@@ -1488,7 +1488,7 @@ export default {
     update_item_detail(item) {
       const vm = this;
       frappe.call({
-        method: "computroid.computroid.api.posapp.get_item_detail",
+        method: "computroidpos.computroidpos.api.posapp.get_item_detail",
         args: {
           warehouse: this.pos_profile.warehouse,
           doc: this.get_invoice_doc(),
@@ -1582,7 +1582,7 @@ export default {
       const vm = this;
       if (this.customer) {
         frappe.call({
-          method: "computroid.computroid.api.posapp.get_customer_info",
+          method: "computroidpos.computroidpos.api.posapp.get_customer_info",
           args: {
             customer: vm.customer,
           },
@@ -1804,7 +1804,7 @@ export default {
     },
 
     shortOpenPayment(e) {
-      if (e.key === "s" && (e.ctrlKey || e.metaKey)) {
+      if (e.key === "F6") {
         e.preventDefault();
         this.show_payment();
       }
@@ -2606,7 +2606,7 @@ export default {
       this.selcted_delivery_charges = {};
       frappe.call({
         method:
-          "computroid.computroid.api.posapp.get_applicable_delivery_charges",
+          "computroidpos.computroidpos.api.posapp.get_applicable_delivery_charges",
         args: {
           company: this.pos_profile.company,
           pos_profile: this.pos_profile.name,
