@@ -107,26 +107,21 @@
                   : 3
               "
             >
-              <!-- <v-btn
+              <v-btn
                 block
                 class=""
                 color="primary"
                 dark
                 @click="set_full_amount(payment.idx)"
-                >{{ payment.mode_of_payment }}</v-btn> -->
-              <v-btn
-                  block
-                  class=""
-                  color="primary"
-                  dark
-                  @click="set_full_amount(payment.idx)"
-                  @keydown.F9="set_full_amount(payment.idx, 'F9')"
-                  @keydown.F10="set_full_amount(payment.idx, 'F10')"
-                  @keydown.F11="set_full_amount(payment.idx, 'F11')"
                 >
-                  {{ payment.mode_of_payment }}
-              </v-btn>
+              <span class="v-btn__content" ref="span1Ref">
+                UPI
+              </span><span class="v-btn__content" ref="span2Ref">
+                Credit Card
+              </span>
+                {{ payment.mode_of_payment }}</v-btn>
             </v-col>
+            <!-- //Jawahar -->
             <v-col v-if="is_mpesa_c2b_payment(payment)" :cols="12" class="pl-3">
               <v-btn
                 block
@@ -715,18 +710,6 @@
 import { evntBus } from "../../bus";
 import format from "../../format";
 export default {
-        // Your data properties, including payment information
-        invoice_doc: {
-        payments: [
-          {
-            idx: 1,
-            mode_of_payment: 'Payment Method 1',
-            amount: 0,
-          },
-          // Add more payment objects as needed
-        ],
-        // ... other invoice data ...
-      },
   mixins: [format],
   data: () => ({
     loading: false,
