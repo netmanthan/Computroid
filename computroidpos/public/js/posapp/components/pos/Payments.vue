@@ -114,11 +114,6 @@
                 dark
                 @click="set_full_amount(payment.idx)"
                 >
-              <span class="v-btn__content" ref="span1Ref">
-                UPI
-              </span><span class="v-btn__content" ref="span2Ref">
-                Credit Card
-              </span>
                 {{ payment.mode_of_payment }}</v-btn>
             </v-col>
             <!-- //Jawahar -->
@@ -981,12 +976,18 @@ export default {
         this.$refs.submitButton.$el.click();
       }
     },
-    span1Ref(e) {
-      if (e.key === "F10") {
-        e.preventDefault();
-        this.$refs.span1Ref.$el.click();
-      }
-    },
+    // span1Ref(e) {
+    //   if (e.key === "F10") {
+    //     e.preventDefault();
+    //     this.$refs.span1Ref.$el.click();
+    //   }
+    // },
+        span1Ref(e) {
+          if (e.key === "F10" && this.$refs.span1Ref.value.includes("UPI")) {
+            e.preventDefault();
+            this.$refs.span1Ref.$el.click();
+          }
+        },
     set_paid_change() {
       if (!this.paid_change) this.paid_change = 0;
 
