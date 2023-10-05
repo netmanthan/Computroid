@@ -984,9 +984,9 @@ export default {
     //   }
     // },
         span1Ref(e) {
-          if (e.key === "F10" && this.$refs.span1Ref.value.includes("UPI")) {
+          if (e.key === "F10" && this.$refs.v-btn__content.value.includes("UPI")) {
             e.preventDefault();
-            this.$refs.span1Ref.$el.click();
+            this.$refs.v-btn__content.$el.click();
           }
         },
     set_paid_change() {
