@@ -715,6 +715,18 @@
 import { evntBus } from "../../bus";
 import format from "../../format";
 export default {
+        // Your data properties, including payment information
+        invoice_doc: {
+        payments: [
+          {
+            idx: 1,
+            mode_of_payment: 'Payment Method 1',
+            amount: 0,
+          },
+          // Add more payment objects as needed
+        ],
+        // ... other invoice data ...
+      },
   mixins: [format],
   data: () => ({
     loading: false,
