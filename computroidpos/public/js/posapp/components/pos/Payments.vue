@@ -983,12 +983,12 @@ export default {
     //     this.$refs.span1Ref.$el.click();
     //   }
     // },
-        span1Ref(e) {
-          if (e.key === "F10" && this.$refs.v-btn__content.value.includes("UPI")) {
-            e.preventDefault();
-            this.$refs.v-btn__content.$el.click();
-          }
-        },
+    span1Ref(e) {
+      if (e.key === "F10" && this.$refs.vBtnContent.textContent.includes("UPI")) {
+        e.preventDefault();
+        this.$refs.vBtnContent.$el.click();
+      }
+    },
     set_paid_change() {
       if (!this.paid_change) this.paid_change = 0;
 
