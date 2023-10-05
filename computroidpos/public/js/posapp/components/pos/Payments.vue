@@ -602,7 +602,7 @@ export default {
         this.submit();
       }
     },
-    shortPay(e) {
+    submitndprnt(e) {
       if (e.key === "F8") {
         e.preventDefault();
         this.$refs.submitButton.$el.click();
