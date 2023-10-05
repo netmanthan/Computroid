@@ -640,6 +640,7 @@
         </v-col>
         <v-col cols="6" class="pl-1">
           <v-btn
+            ref="submitButton" 
             block
             large
             color="success"
@@ -966,6 +967,12 @@ export default {
       if (e.key === "F7") {
         e.preventDefault();
         this.submit();
+      }
+    },
+    shortPandSubmit(e) {
+      if (e.key === "F8") {
+        e.preventDefault();
+        this.$refs.submitButton.$el.click();
       }
     },
     set_paid_change() {
@@ -1393,7 +1400,8 @@ export default {
   },
   created() {
     document.addEventListener("keydown", this.shortPay.bind(this));
-  },
+    document.addEventListener("keydown", this.shortPandSubmit.bind(this));
+      },
   beforeDestroy() {
     evntBus.$off("send_invoice_doc_payment");
     evntBus.$off("register_pos_profile");
@@ -1408,6 +1416,8 @@ export default {
 
   destroyed() {
     document.removeEventListener("keydown", this.shortPay);
+    document.removeEventListener("keydown", this.shortPandSubmit);
+
   },
 
   watch: {
