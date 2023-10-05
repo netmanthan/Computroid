@@ -10,7 +10,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="error" @click="cancel_invoice">
-            {{ __("Cancel")}}
+            {{ __("Cancel") }}
           </v-btn>
           <v-btn color="warning" @click="cancel_dialog = false">
             {{ __("Back") }}
@@ -750,8 +750,7 @@
                 color="warning"
                 dark
                 @click="get_draft_invoices"
-                accesskey="d"
-                >{{ __("Recall-Hold") }}(Alt+D)</v-btn
+                >{{ __("Held") }}</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -762,8 +761,7 @@
                 color="secondary"
                 dark
                 @click="open_returns"
-                accesskey="R"
-                >{{ __("Return") }}(Alt+R)</v-btn
+                >{{ __("Return") }}</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -783,8 +781,7 @@
                 color="accent"
                 dark
                 @click="new_invoice"
-                accesskey="h"
-                >{{ __("Hold & New") }}(Alt+H)</v-btn
+                >{{ __("Save/New") }}</v-btn
               >
             </v-col>
             <v-col class="pa-1">
@@ -794,8 +791,7 @@
                 color="success"
                 @click="show_payment"
                 dark
-                accesskey="P"
-                >{{ __("PAY") }}(Alt+P)</v-btn
+                >{{ __("PAY") }}</v-btn
               >
             </v-col>
             <v-col
@@ -1067,7 +1063,7 @@ export default {
       this.posting_date = frappe.datetime.nowdate();
       if (doc.name && this.pos_profile.posa_allow_delete) {
         frappe.call({
-          method: "computroidpos.computroidpos.api.posapp.delete_invoice",
+          method: "posawesome.posawesome.api.posapp.delete_invoice",
           args: { invoice: doc.name },
           async: true,
           callback: function (r) {
@@ -1237,7 +1233,7 @@ export default {
     update_invoice(doc) {
       const vm = this;
       frappe.call({
-        method: "computroidpos.computroidpos.api.posapp.update_invoice",
+        method: "posawesome.posawesome.api.posapp.update_invoice",
         args: {
           data: doc,
         },
@@ -1437,7 +1433,7 @@ export default {
     get_draft_invoices() {
       const vm = this;
       frappe.call({
-        method: "computroidpos.computroidpos.api.posapp.get_draft_invoices",
+        method: "posawesome.posawesome.api.posapp.get_draft_invoices",
         args: {
           pos_opening_shift: this.pos_opening_shift.name,
         },
@@ -1465,7 +1461,7 @@ export default {
       const vm = this;
       if (!vm.pos_profile) return;
       frappe.call({
-        method: "computroidpos.computroidpos.api.posapp.get_items_details",
+        method: "posawesome.posawesome.api.posapp.get_items_details",
         async: false,
         args: {
           pos_profile: vm.pos_profile,
@@ -1492,7 +1488,7 @@ export default {
     update_item_detail(item) {
       const vm = this;
       frappe.call({
-        method: "computroidpos.computroidpos.api.posapp.get_item_detail",
+        method: "posawesome.posawesome.api.posapp.get_item_detail",
         args: {
           warehouse: this.pos_profile.warehouse,
           doc: this.get_invoice_doc(),
@@ -1586,7 +1582,7 @@ export default {
       const vm = this;
       if (this.customer) {
         frappe.call({
-          method: "computroidpos.computroidpos.api.posapp.get_customer_info",
+          method: "posawesome.posawesome.api.posapp.get_customer_info",
           args: {
             customer: vm.customer,
           },
@@ -1808,7 +1804,7 @@ export default {
     },
 
     shortOpenPayment(e) {
-      if (e.key === "F6") {
+      if (e.key === "s" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         this.show_payment();
       }
@@ -2610,7 +2606,7 @@ export default {
       this.selcted_delivery_charges = {};
       frappe.call({
         method:
-          "computroidpos.computroidpos.api.posapp.get_applicable_delivery_charges",
+          "posawesome.posawesome.api.posapp.get_applicable_delivery_charges",
         args: {
           company: this.pos_profile.company,
           pos_profile: this.pos_profile.name,
