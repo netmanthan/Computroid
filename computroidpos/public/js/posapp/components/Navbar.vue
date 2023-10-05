@@ -28,9 +28,7 @@
       <div class="text-center">
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" dark text v-bind="attrs" v-on="on"
-              >Menu</v-btn
-            >
+            <v-btn color="primary" dark text v-bind="attrs" v-on="on">Menu</v-btn>
           </template>
           <v-card class="mx-auto" max-width="300" tile>
             <v-list dense>
@@ -43,25 +41,18 @@
                     <v-icon>mdi-content-save-move-outline</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <v-list-item-title>{{
-                      __('Close Shift')
-                    }}</v-list-item-title>
+                    <v-list-item-title>{{ __("Close Shift") }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-list-item
                   @click="print_last_invoice"
-                  v-if="
-                    pos_profile.posa_allow_print_last_invoice &&
-                    this.last_invoice
-                  "
+                  v-if="pos_profile.posa_allow_print_last_invoice && this.last_invoice"
                 >
                   <v-list-item-icon>
                     <v-icon>mdi-printer</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <v-list-item-title>{{
-                      __('Print Last Invoice')
-                    }}</v-list-item-title>
+                    <v-list-item-title>{{ __("Print Last Invoice") }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-divider class="my-0"></v-divider>
@@ -70,7 +61,7 @@
                     <v-icon>mdi-logout</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <v-list-item-title>{{ __('Logout') }}</v-list-item-title>
+                    <v-list-item-title>{{ __("Logout") }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-list-item @click="go_about">
@@ -78,7 +69,7 @@
                     <v-icon>mdi-information-outline</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <v-list-item-title>{{ __('About') }}</v-list-item-title>
+                    <v-list-item-title>{{ __("About") }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list-item-group>
@@ -113,18 +104,18 @@
             :key="item.text"
             @click="changePage(item.text)"
           >
-            <v-list-item-icon>
+            <!-- <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title v-text="item.text"></v-list-item-title>
-            </v-list-item-content>
+            </v-list-item-content> -->
             <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
-          </v-list-item-content>
+              <v-list-item-title>{{ item.text }}</v-list-item-title>
+            </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -144,7 +135,7 @@
 </template>
 
 <script>
-import { evntBus } from '../bus';
+import { evntBus } from "../bus";
 
 export default {
   // components: {MyPopup},
@@ -153,42 +144,39 @@ export default {
       drawer: false,
       mini: true,
       item: 0,
-      items: [{ text: 'POS', icon: 'mdi-network-pos' }],
-      page: '',
+      items: [{ text: "POS", icon: "mdi-network-pos" }],
+      page: "",
       fav: true,
       menu: false,
       message: false,
       hints: true,
       menu_item: 0,
       snack: false,
-      snackColor: '',
-      snackText: '',
-      company: 'Computroid POS',
-      company_img: '/assets/erpnext/images/erpnext-logo.svg',
-      pos_profile: '',
+      snackColor: "",
+      snackText: "",
+      company: "Computroid POS",
+      company_img: "/pos/ShoperPrime.svg",
+      pos_profile: "",
       freeze: false,
-      freezeTitle: '',
-      freezeMsg: '',
-      last_invoice: '',
+      freezeTitle: "",
+      freezeMsg: "",
+      last_invoice: "",
     };
   },
   methods: {
     changePage(key) {
-      this.$emit('changePage', key);
+      this.$emit("changePage", key);
     },
     go_desk() {
-      frappe.set_route('/');
+      frappe.set_route("/");
       location.reload();
     },
     go_about() {
-      const win = window.open(
-        'https://github.com/netmanthan/computroid_pos',
-        '_blank'
-      );
+      const win = window.open("https://github.com/netmanthan/computroid_pos", "_blank");
       win.focus();
     },
     close_shift_dialog() {
-      evntBus.$emit('open_closing_dialog');
+      evntBus.$emit("open_closing_dialog");
     },
     show_mesage(data) {
       this.snack = true;
@@ -199,12 +187,12 @@ export default {
       var me = this;
       me.logged_out = true;
       return frappe.call({
-        method: 'logout',
+        method: "logout",
         callback: function (r) {
           if (r.exc) {
             return;
           }
-          frappe.set_route('/login');
+          frappe.set_route("/login");
           location.reload();
         },
       });
@@ -212,21 +200,20 @@ export default {
     print_last_invoice() {
       if (!this.last_invoice) return;
       const print_format =
-        this.pos_profile.print_format_for_online ||
-        this.pos_profile.print_format;
+        this.pos_profile.print_format_for_online || this.pos_profile.print_format;
       const letter_head = this.pos_profile.letter_head || 0;
       const url =
         frappe.urllib.get_base_url() +
-        '/printview?doctype=Sales%20Invoice&name=' +
+        "/printview?doctype=Sales%20Invoice&name=" +
         this.last_invoice +
-        '&trigger_print=1' +
-        '&format=' +
+        "&trigger_print=1" +
+        "&format=" +
         print_format +
-        '&no_letterhead=' +
+        "&no_letterhead=" +
         letter_head;
-      const printWindow = window.open(url, 'Print');
+      const printWindow = window.open(url, "Print");
       printWindow.addEventListener(
-        'load',
+        "load",
         function () {
           printWindow.print();
         },
@@ -236,18 +223,16 @@ export default {
   },
   created: function () {
     this.$nextTick(function () {
-      evntBus.$on('show_mesage', (data) => {
+      evntBus.$on("show_mesage", (data) => {
         this.show_mesage(data);
       });
-      evntBus.$on('set_company', (data) => {
+      evntBus.$on("set_company", (data) => {
         this.company = data.name;
-        this.company_img = data.company_logo
-          ? data.company_logo
-          : this.company_img;
+        this.company_img = data.company_logo ? data.company_logo : this.company_img;
       });
-      evntBus.$on('register_pos_profile', (data) => {
+      evntBus.$on("register_pos_profile", (data) => {
         this.pos_profile = data.pos_profile;
-        const payments = { text: 'Payments', icon: 'mdi-cash-register' };
+        const payments = { text: "Payments", icon: "mdi-cash-register" };
         if (
           this.pos_profile.posa_use_pos_computroid_payments &&
           this.items.length !== 2
@@ -255,18 +240,18 @@ export default {
           this.items.push(payments);
         }
       });
-      evntBus.$on('set_last_invoice', (data) => {
+      evntBus.$on("set_last_invoice", (data) => {
         this.last_invoice = data;
       });
-      evntBus.$on('freeze', (data) => {
+      evntBus.$on("freeze", (data) => {
         this.freeze = true;
         this.freezeTitle = data.title;
         this.freezeMsg = data.msg;
       });
-      evntBus.$on('unfreeze', () => {
+      evntBus.$on("unfreeze", () => {
         this.freeze = false;
-        this.freezTitle = '';
-        this.freezeMsg = '';
+        this.freezTitle = "";
+        this.freezeMsg = "";
       });
     });
   },
