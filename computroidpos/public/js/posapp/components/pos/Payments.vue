@@ -45,8 +45,19 @@
                 !is_mpesa_c2b_payment(payment)
                 : 3
               ">
+              <v-btn 
+              block class="" 
+              color="primary" 
+              dark 
+              @keydown.f10.prevent="handleF10UPIpress"
+              >
+              {{ payment.mode_of_paymen}}
+              </v-btn>
               <v-btn block class="" color="primary" dark @click="set_full_amount(payment.idx)">{{ payment.mode_of_payment
               }}</v-btn>
+                            <v-btn block class="" color="primary" dark @click="set_full_amount(payment.idx)">{{ payment.mode_of_payment
+              }}</v-btn>
+              <!-- need  to Change This to add Shortcuts Jawahar -->
             </v-col>
             <v-col v-if="is_mpesa_c2b_payment(payment)" :cols="12" class="pl-3">
               <v-btn block class="" color="success" dark @click="mpesa_c2b_dialg(payment)">
@@ -319,6 +330,9 @@
         </v-card>
       </v-dialog>
     </div>
+    <button @click="handleCashPayment">Cash</button>
+    <button @click="handleCreditCardPayment">Credit Card</button>
+    <button @click="handleUpiPayment">UPI</button>
   </div>
 </template>
 
@@ -326,6 +340,18 @@
 import { evntBus } from "../../bus";
 import format from "../../format";
 export default {
+  name: 'PaymentSystem',
+  methods: {
+    handleCashPayment() {
+      // Implement cash payment logic here
+    },
+    handleCreditCardPayment() {
+      // Implement credit card payment logic here
+    },
+    handleUpiPayment() {
+      // Implement UPI payment logic here
+    },
+  },
   mixins: [format],
   data: () => ({
     loading: false,
@@ -961,6 +987,16 @@ export default {
   },
 
   mounted: function () {
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'F10') {
+          this.handleCashPayment();
+        } else if (event.key === 'F11') {
+          this.handleCreditCardPayment();
+        } else if (event.key === 'F12') {
+          this.handleUpiPayment();
+        }
+      });
+
     this.$nextTick(function () {
       evntBus.$on("send_invoice_doc_payment", (invoice_doc) => {
         this.invoice_doc = invoice_doc;
