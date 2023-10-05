@@ -53,10 +53,6 @@
               >
               {{ payment.mode_of_paymen}}
               </v-btn>
-              <v-btn block class="" color="primary" dark @click="set_full_amount(payment.idx)">{{ payment.mode_of_payment
-              }}</v-btn>
-                            <v-btn block class="" color="primary" dark @click="set_full_amount(payment.idx)">{{ payment.mode_of_payment
-              }}</v-btn>
               <!-- need  to Change This to add Shortcuts Jawahar -->
             </v-col>
             <v-col v-if="is_mpesa_c2b_payment(payment)" :cols="12" class="pl-3">
