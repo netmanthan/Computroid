@@ -984,7 +984,7 @@ export default {
     //   }
     // },
     vBtnContent(e) {
-      if (e.key === "F10" && this.$refs.vBtnContent.textContent.includes("UPI")) {
+      if (e.key === 'F10' && this.$refs.vBtnContent.textContent === 'UPI') {
         e.preventDefault();
         this.$refs.vBtnContent.$el.click();
       }
