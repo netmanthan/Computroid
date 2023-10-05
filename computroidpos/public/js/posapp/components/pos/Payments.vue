@@ -107,14 +107,25 @@
                   : 3
               "
             >
-              <v-btn
+              <!-- <v-btn
                 block
                 class=""
                 color="primary"
                 dark
                 @click="set_full_amount(payment.idx)"
-                >{{ payment.mode_of_payment }}</v-btn
-              >
+                >{{ payment.mode_of_payment }}</v-btn> -->
+              <v-btn
+                  block
+                  class=""
+                  color="primary"
+                  dark
+                  @click="set_full_amount(payment.idx)"
+                  @keydown.F9="set_full_amount(payment.idx, 'F9')"
+                  @keydown.F10="set_full_amount(payment.idx, 'F10')"
+                  @keydown.F11="set_full_amount(payment.idx, 'F11')"
+                >
+                  {{ payment.mode_of_payment }}
+              </v-btn>
             </v-col>
             <v-col v-if="is_mpesa_c2b_payment(payment)" :cols="12" class="pl-3">
               <v-btn
