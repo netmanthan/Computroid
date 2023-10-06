@@ -106,7 +106,12 @@
                     !is_mpesa_c2b_payment(payment)
                   : 3
               "
-            >
+            >        
+              <v-btn-toggle v-model="selectedPaymentIdx">
+            <v-btn v-for="(payment, index) in payments" :key="index" :value="index">
+              {{ payment.mode_of_payment }}
+            </v-btn>
+          </v-btn-toggle>
               <v-btn
                 ref="vBtnContent"
                 block
