@@ -751,7 +751,7 @@
                 color="warning"
                 dark
                 @click="get_draft_invoices"
-                >{{ __("Recall-Hold") }}{{ __("Recall-Hold") }}</v-btn
+                >{{ __("Recall-Hold") }}(F5)</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -1811,7 +1811,7 @@ export default {
       }
     },
     recall(e) {
-      if (e.key === "F6") {
+      if (e.key === "F5") {
         e.preventDefault();
         this.recall();
       }
