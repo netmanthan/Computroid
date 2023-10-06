@@ -763,7 +763,7 @@
                 color="secondary"
                 dark
                 @click="open_returns"
-                >{{ __("Return")(F3)}}</v-btn>
+                >{{ __("Return")}}(F3)</v-btn>
             </v-col>
             <v-col cols="6" class="pa-1">
               <v-btn
@@ -793,7 +793,7 @@
                 color="success"
                 @click="show_payment"
                 dark
-                >{{ __("PAY") }}</v-btn
+                >{{ __("PAY")}}(F6)</v-btn
               >
             </v-col>
             <v-col
