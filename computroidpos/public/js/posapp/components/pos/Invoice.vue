@@ -756,14 +756,14 @@
             </v-col>
             <v-col cols="6" class="pa-1">
               <v-btn
+                ref="returnb"
                 block
                 class="pa-0"
                 :class="{ 'disable-events': !pos_profile.posa_allow_return }"
                 color="secondary"
                 dark
                 @click="open_returns"
-                >{{ __("Return") }}</v-btn
-              >
+                >{{ __("Return")(F3)}}</v-btn>
             </v-col>
             <v-col cols="6" class="pa-1">
               <v-btn
@@ -783,7 +783,7 @@
                 color="accent"
                 dark
                 @click="new_invoice"
-                >{{ __("Hold-Bill") }}F4</v-btn
+                >{{ __("Hold-Bill") }}(F4)</v-btn
               >
             </v-col>
             <v-col class="pa-1">
@@ -1804,7 +1804,12 @@ export default {
       // update item batch_no_data from batch_no_data
       item.batch_no_data = batch_no_data;
     },
-
+    returnbill(e) {
+      if (e.key === "F3") {
+        e.preventDefault();
+        this.$refs.returnb.$el.click();
+      }
+    },
     shortOpenPayment(e) {
       if (e.key === "F6") {
         e.preventDefault();
@@ -2726,6 +2731,8 @@ export default {
     document.addEventListener("keydown", this.shortSelectDiscount.bind(this));
     document.addEventListener("keydown", this.recall.bind(this));
     document.addEventListener("keydown", this.holdbb.bind(this));
+    document.addEventListener("keydown", this.returnbill.bind(this));
+    
   },
   destroyed() {
     document.removeEventListener("keydown", this.shortOpenPayment);
@@ -2734,6 +2741,7 @@ export default {
     document.removeEventListener("keydown", this.shortSelectDiscount);
     document.removeEventListener("keydown", this.recall);
     document.removeEventListener("keydown", this.holdbb);
+    document.removeEventListener("keydown", this.returnbill);
 
     
   },
