@@ -777,12 +777,13 @@
             </v-col>
             <v-col cols="6" class="pa-1">
               <v-btn
+                ref="holdbill"
                 block
                 class="pa-0"
                 color="accent"
                 dark
                 @click="new_invoice"
-                >{{ __("Save/New") }}</v-btn
+                >{{ __("Hold-Bill") }}F4</v-btn
               >
             </v-col>
             <v-col class="pa-1">
@@ -1816,6 +1817,13 @@ export default {
         this.$refs.recall.$el.click();
       }
     },
+    holdbb(e) {
+      if (e.key === "F4") {
+        e.preventDefault();
+        this.$refs.holdbill.$el.click();
+      }
+    },
+    // Jawahar R Malllah
 
     shortDeleteFirstItem(e) {
       if (e.key === "d" && (e.ctrlKey || e.metaKey)) {
@@ -2717,6 +2725,7 @@ export default {
     document.addEventListener("keydown", this.shortOpenFirstItem.bind(this));
     document.addEventListener("keydown", this.shortSelectDiscount.bind(this));
     document.addEventListener("keydown", this.recall.bind(this));
+    document.addEventListener("keydown", this.holdbb.bind(this));
   },
   destroyed() {
     document.removeEventListener("keydown", this.shortOpenPayment);
@@ -2724,6 +2733,7 @@ export default {
     document.removeEventListener("keydown", this.shortOpenFirstItem);
     document.removeEventListener("keydown", this.shortSelectDiscount);
     document.removeEventListener("keydown", this.recall);
+    document.removeEventListener("keydown", this.holdbb);
 
     
   },
