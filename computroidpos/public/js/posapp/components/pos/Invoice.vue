@@ -745,12 +745,13 @@
           <v-row no-gutters class="pa-1 pt-2 pl-0">
             <v-col cols="6" class="pa-1">
               <v-btn
+              ref="recall"
                 block
                 class="pa-0"
                 color="warning"
                 dark
                 @click="get_draft_invoices"
-                >{{ __("Held") }}</v-btn
+                >{{ __("Recall-Hold") }}{{ __("Recall-Hold") }}</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -1809,6 +1810,12 @@ export default {
         this.show_payment();
       }
     },
+    recall(e) {
+      if (e.key === "F6") {
+        e.preventDefault();
+        this.recall();
+      }
+    },
 
     shortDeleteFirstItem(e) {
       if (e.key === "d" && (e.ctrlKey || e.metaKey)) {
@@ -1824,6 +1831,7 @@ export default {
         this.expanded.push(this.items[0]);
       }
     },
+    
 
     shortSelectDiscount(e) {
       if (e.key === "z" && (e.ctrlKey || e.metaKey)) {
@@ -2708,12 +2716,16 @@ export default {
     document.addEventListener("keydown", this.shortDeleteFirstItem.bind(this));
     document.addEventListener("keydown", this.shortOpenFirstItem.bind(this));
     document.addEventListener("keydown", this.shortSelectDiscount.bind(this));
+    document.addEventListener("keydown", this.recall.bind(this));
   },
   destroyed() {
     document.removeEventListener("keydown", this.shortOpenPayment);
     document.removeEventListener("keydown", this.shortDeleteFirstItem);
     document.removeEventListener("keydown", this.shortOpenFirstItem);
     document.removeEventListener("keydown", this.shortSelectDiscount);
+    document.removeEventListener("keydown", this.recall);
+
+    
   },
   watch: {
     customer() {

@@ -966,13 +966,13 @@ export default {
       }
     },
     shortPay(e) {
-      if (e.key === "F7") {
+      if (e.key === "F12") {
         e.preventDefault();
         this.submit();
       }
     },
     shortPandSubmit(e) {
-      if (e.key === "F8") {
+      if (e.key === "F7") {
         e.preventDefault();
         this.$refs.submitButton.$el.click();
       }
