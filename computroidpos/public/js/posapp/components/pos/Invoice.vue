@@ -1813,7 +1813,7 @@ export default {
     recall(e) {
       if (e.key === "F5") {
         e.preventDefault();
-        this.recall();
+        this.$refs.recall.$el.click();
       }
     },
 
