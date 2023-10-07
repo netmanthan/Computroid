@@ -130,7 +130,7 @@
         <v-col cols="12">
           <v-select
             :items="items_group"
-            :label="frappe._('Items Group')"
+            :label="frappe._('Products Group')"
             dense
             outlined
             hide-details
