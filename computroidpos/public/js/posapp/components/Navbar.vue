@@ -6,7 +6,7 @@
         class="grey--text"
       ></v-app-bar-nav-icon>
       <v-img
-        src="/assets/computroidpos/js/posapp/components/pos/pos.png"
+        src="/assets/computroidpos/js/posapp/components/pos/ShoperPrime.svg"
         alt="Computroid POS"
         max-width="32"
         class="mr-2"
