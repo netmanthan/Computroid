@@ -710,10 +710,6 @@
           { idx: 2, mode_of_payment: 'Credit Card' },
           { idx: 3, mode_of_payment: 'UPI' },
         ],
-      };
-    },
-    mixins: [format],
-    data: () => ({
       loading: false,
       pos_profile: "",
       invoice_doc: "",
@@ -737,8 +733,9 @@
       pos_settings: "",
       customer_info: "",
       mpesa_modes: [],
-    }),
-  
+      };
+    },
+    mixins: [format],  
     methods: {
       handleKeyboardShortcut(mode) {
         switch (mode) {
