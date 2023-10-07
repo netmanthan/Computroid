@@ -6,7 +6,7 @@
         class="grey--text"
       ></v-app-bar-nav-icon>
       <v-img
-        src="/assets/computroidpos/js/posapp/components/pos/ShoperPrime.svg"
+        src="/assets/computroidpos/js/posapp/components/pos/poslogo.svg"
         alt="Computroid POS"
         max-width="32"
         class="mr-2"
@@ -155,7 +155,7 @@ export default {
       snackColor: "",
       snackText: "",
       company: "Computroid POS",
-      company_img: "/pos/ShoperPrime.svg",
+      company_img: "/assets/computroidpos/js/posapp/components/pos/poslogo.svg",
       pos_profile: "",
       freeze: false,
       freezeTitle: "",
@@ -172,7 +172,7 @@ export default {
       location.reload();
     },
     go_about() {
-      const win = window.open("https://github.com/netmanthan/computroid_pos", "_blank");
+      const win = window.open("https://netmanthan.com", "_blank");
       win.focus();
     },
     close_shift_dialog() {
