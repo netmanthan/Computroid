@@ -19,7 +19,7 @@ frappe.PosApp.posapp = class {
                     theme: {
                         themes: {
                             light: {
-                                background: '#FFFFFF',
+                                background: '#979797ff',
                                 primary: '#0097A7',
                                 secondary: '#00BCD4',
                                 accent: '#9575CD',
